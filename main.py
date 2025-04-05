@@ -98,10 +98,10 @@ if source_radio == IMAGE:
             if source_image is None:
                 default_image_path = str(DEFAULT_IMAGE)
                 default_image = Image.open(default_image_path)
-                st.image(default_image_path, caption = "Default Image", use_column_width=True)
+                st.image(default_image_path, caption = "Default Image", use_container_width=True)
             else:
                 uploaded_image  =Image.open(source_image)
-                st.image(source_image, caption = "Uploaded Image", use_column_width = True)
+                st.image(source_image, caption = "Uploaded Image", use_container_width = True)
         except Exception as e:
             st.error("Error Occured While Opening the Image")
             st.error(e)
@@ -110,13 +110,13 @@ if source_radio == IMAGE:
             if source_image is None:
                 default_detected_image_path = str(DEFAULT_DETECT_IMAGE)
                 default_detected_image = Image.open(default_detected_image_path)
-                st.image(default_detected_image_path, caption = "Detected Image", use_column_width = True)
+                st.image(default_detected_image_path, caption = "Detected Image", use_container_width = True)
             else:
                 if st.sidebar.button("Detect Objects"):
                     result = model.predict(uploaded_image, conf = confidence_value)
                     boxes = result[0].boxes
                     result_plotted = result[0].plot()[:,:,::-1]
-                    st.image(result_plotted, caption = "Detected Image", use_column_width = True)
+                    st.image(result_plotted, caption = "Detected Image", use_container_width = True)
 
                     try:
                         with st.expander("Detection Results"):
@@ -152,7 +152,7 @@ elif source_radio == VIDEO:
                         result_plotted = result[0].plot()
                         st_frame.image(result_plotted, caption = "Detected Video",
                                        channels = "BGR",
-                                       use_column_width=True)
+                                       use_container_width=True)
                     else:
                         video_cap.release()
                         break
