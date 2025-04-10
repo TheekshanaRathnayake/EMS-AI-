@@ -39,7 +39,7 @@ VIDEOS_DICT = {
 
 #Model Configurations
 MODEL_DIR = ROOT/'weights'
-DETECTION_MODEL = MODEL_DIR/'best.pt'
+DETECTION_MODEL = MODEL_DIR/'best(7).pt'
 
 #In case of your custom model
 #DETECTION_MODEL = MODEL_DIR/'custom_model_weight.pt'
